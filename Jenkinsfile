@@ -24,5 +24,13 @@ pipeline {
                 }
             }
         }
+        stage('Build Docker Image') {
+            steps {
+                dir('calculator-app') {
+                    // Jenkins will run Docker via Windows batch command
+                    bat 'docker build -t devops-calculator:v1 .'
+                }
+            }
+        }
     }
 }
